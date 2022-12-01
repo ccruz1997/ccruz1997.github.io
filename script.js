@@ -67,13 +67,15 @@ function initChart(chart, object){
       responsive: true,
       layout: { 
         padding: {
-          left: 100
+          left: 100,
+          right: 0
         }
       },
       scales: {
-        x: [{
+        xAxes: [{
           ticks: {
-            autoSkip: false
+            autoSkip: false,
+            fontSize: 16
           }
         }]
       }
