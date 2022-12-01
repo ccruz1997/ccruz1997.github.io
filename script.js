@@ -15,7 +15,6 @@ function uniquePayees(data){
     reply = data.map((item) => item.payee_name).filter((value, index, self) => self.indexOf(value) === index);
     return reply;
 } 
-
 function dataByPayee(data,payees) {
     let newData = data;
     let newPayees = payees;
@@ -24,16 +23,12 @@ function dataByPayee(data,payees) {
     for (i = 0; i < dataOnPayee.length; i++) {
         dataOnPayee[i] = new Array();
     }
-
     console.log(dataOnPayee);
-
     newData.forEach(element => {
        dataOnPayee[newPayees.indexOf(element.payee_name)].push(element.amount)
     });
-
     console.log(dataOnPayee)
     return dataOnPayee;
-
 }
 */
 function initChart(chart, object){
@@ -42,9 +37,25 @@ function initChart(chart, object){
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      label:'PG County Payments Made | Per Agency',
+      backgroundColor: ['rgba(142,202,230)',
+                        'rgba(251, 133, 0)',
+                        'rgba(2, 48, 71)',
+                        'rgba(255, 183, 3)',
+                        'rgba(36, 16, 35)',
+                        'rgba(163, 50, 11)',
+                        'rgba(213, 230, 141)',
+                        'rgba(25, 64, 0)',
+                        'rgba(63, 200, 70)',
+                        'rgba(0,255,0)',
+                        'rgba(58,134,255)',
+                        'rgba(131,56,236)',
+                        'rgba(255,0,110)',
+                        'rgba(251,86,7)',
+                        'rgba(0,86,7)'
+    ],
+                        
+
       data: info
     }]
   };
@@ -52,7 +63,21 @@ function initChart(chart, object){
   const config = {
     type: 'bar',
     data: data,
-    options: {}
+    options: {
+      responsive: true,
+      layout: { 
+        padding: {
+          left: 100
+        }
+      },
+      scales: {
+        x: [{
+          ticks: {
+            autoSkip: false
+          }
+        }]
+      }
+    }
   };  
 
   return new Chart(
@@ -84,10 +109,8 @@ async function MainEvent() {
 /*
   payees = uniquePayees(response);
   amountByPayee = dataByPayee(response,payees)
-
   labels = payees;
   datasets = amountByPayee;
-
   console.log(labels);
   console.log(datasets);
   */

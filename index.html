@@ -1,18 +1,45 @@
-
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Group Project Base</title>
-        <h1> PG County Spending, Number of Payments Per Agency</h1>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div>
-            <canvas id="myChart"></canvas>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="./script.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizing PG County Spending, FY2022</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1 class="header">PG County Spending FY2022, Payments by Agency Paid</h1>
+      </header>
+      <div class="container">
+          <div class="box left_section">
+            <p>
+                <li>
+                  The following visualization describes payments to different agencies
+                  of PG county in the 2022 fiscal year.
+                </li>
+                <li>
+                  This includes amount of payments per agency, sum of payments per
+                  agency, and the amount of payments to particular payees.
+                </li>
+              </p>
+          </div>
+          <div class="box right_section">
+            <canvas
+              id="myChart"
+              style="position: relative; height: 80vh; width: 80vw;"
+            ></canvas>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script src="./script.js"></script>
+      </div>
+
+      <footer class="footer">
+        CCRUZ1997:<a href="https://github.com/ccruz1997" target="_blank">
+          GitHub</a
+        >
+      </footer>
+    </div>
+  </body>
 </html>
