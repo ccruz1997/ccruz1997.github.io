@@ -10,29 +10,47 @@
   <body>
     <div class="wrapper">
       <header class="header">
-        <h1 class="header">PG County Spending FY2022, Payments by Agency Paid</h1>
+        <h1 class="header">
+          PG County Spending FY2022, Payments by Agency Paid
+        </h1>
       </header>
       <div class="container">
-          <div class="box left_section">
-            <p>
-                <li>
-                  The following visualization describes payments to different agencies
-                  of PG county in the 2022 fiscal year.
-                </li>
-                <li>
-                  This includes amount of payments per agency, sum of payments per
-                  agency, and the amount of payments to particular payees.
-                </li>
-              </p>
-          </div>
-          <div class="box right_section">
-            <canvas
-              id="myChart"
-              style="position: relative; height: 80vh; width: 80vw;"
-            ></canvas>
-          </div>
-          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-          <script src="./script.js"></script>
+        <div class="box left_section">
+          <p>
+            <li>
+              The following visualization describes payments to different
+              agencies of PG county in the 2022 fiscal year.
+            </li>
+            <li>
+              This includes amount of payments per agency, sum of payments per
+              agency, and the amount of payments to particular payees.
+            </li>
+            <li>
+              Hover over each bar for each data point and interact with the
+              filtering options below (*ahem* there's a lot of police spending).
+            </li>
+          </p>
+        </div>
+        <div
+          class="chart container"
+          style="display: flex; flex: 0 1 auto; position: relative; height: 40vh; width: 80vw"
+        >
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="box disclaimer">
+          <li>
+            *** It is to be noted this is from a sample size of 1000 records,
+            the original dataset has far more, yet were inaccessible due to
+            issues with the PG county API.
+          </li>
+          <li>
+            Please take this into consideration when examining the data, and
+            visit the link in the footer for access to the complete data set ***
+          </li>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./script.js"></script>
       </div>
 
       <footer class="footer">
@@ -40,8 +58,13 @@
           GitHub</a
         >
 
-        PG County: <a href="https://data.princegeorgescountymd.gov/Finance-and-Budget/Spending-Information-for-FY-2022/jh2p-ym6a"
-                              target = "_blank"> Dataset</a>
+        PG County:
+        <a
+          href="https://data.princegeorgescountymd.gov/Finance-and-Budget/Spending-Information-for-FY-2022/jh2p-ym6a"
+          target="_blank"
+        >
+          Dataset</a
+        >
       </footer>
     </div>
   </body>

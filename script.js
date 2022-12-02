@@ -65,10 +65,11 @@ function initChart(chart, object){
     data: data,
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       layout: { 
         padding: {
           left: 100,
-          right: 0
+          right: 100
         }
       },
       scales: {
