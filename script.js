@@ -10,27 +10,6 @@ async function getData() {
   }
 };
 
-/*
-function uniquePayees(data){
-    reply = data.map((item) => item.payee_name).filter((value, index, self) => self.indexOf(value) === index);
-    return reply;
-} 
-function dataByPayee(data,payees) {
-    let newData = data;
-    let newPayees = payees;
-    let dataOnPayee = new Array(payees.length);
-    
-    for (i = 0; i < dataOnPayee.length; i++) {
-        dataOnPayee[i] = new Array();
-    }
-    console.log(dataOnPayee);
-    newData.forEach(element => {
-       dataOnPayee[newPayees.indexOf(element.payee_name)].push(element.amount)
-    });
-    console.log(dataOnPayee)
-    return dataOnPayee;
-}
-*/
 function initChart(chart, object){
   const labels = Object.keys(object);
   const info = Object.keys(object).map((item) => object[item].length);
@@ -89,7 +68,7 @@ function initChart(chart, object){
   );
 };
 
-function shapeDataForChart(array) {
+function shapeDataForChart(array, endpoint) {
     return array.reduce((collection,item) => {
         if (!collection[item.agency]){
             collection[item.agency] = [item];
@@ -100,23 +79,44 @@ function shapeDataForChart(array) {
     },{});
 }
 
+function addData(chart, label, data) {
+  chart.data.labels.push(label);
+  chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(data);
+  });
+  chart.update();
+}
+
+
+function removeData(chart) {
+  chart.data.labels.pop();
+  chart.data.datasets.forEach((dataset) => {
+      dataset.data.pop();
+  });
+  chart.update();
+}
+
+function chartRefresh(chart) {
+  chart.update();
+  console.log('success!')
+}
 
 
 async function MainEvent() {
   const chartTarget = document.querySelector('#myChart');
   const chartData = await getData();
   const shapedData = shapeDataForChart(chartData);
-
-  initChart(chartTarget, shapedData);
+  const refreshButton = document.getElementById('refresh_button')
+  let myChart = initChart(chartTarget, shapedData);
   console.log(shapedData);
-/*
-  payees = uniquePayees(response);
-  amountByPayee = dataByPayee(response,payees)
-  labels = payees;
-  datasets = amountByPayee;
-  console.log(labels);
-  console.log(datasets);
-  */
+
+  refreshButton.addEventListener('click', (SubmitEvent) => {
+    console.log('button fired!');
+    chartRefresh(myChart);
+  })
+
+
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => MainEvent());
