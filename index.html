@@ -22,25 +22,27 @@
               agencies of PG county in the 2022 fiscal year.
             </li>
             <li>
-              This includes amount of payments per agency, sum of payments per
-              agency, and the amount of payments to particular payees.
+              This particular chart shows the number of payments made.
             </li>
             <li>
               Hover over each bar for each data point and interact with the
-              filtering options below (*ahem* there's a lot of police spending).
+              filtering options below.
             </li>
           </p>
         </div>
-        <div class="box left_section">
-            <form class="box main_form">
-              <label for="resto"> Filter Restaurant List</label>
-              <input type="text" name="resto" id="resto" />
-              <div class="box" id = "restaurant_list"> Amount of payments by agency:</div>
-            </form>
-        </div>
+        
         <div class="chart_container" style="width: 100%; height: 500px">
           <canvas id="myChart"></canvas>
         </div>
+
+        <div class="box left_section">
+          <form class="box main_form">
+            <label for="resto"> Filter by agency:</label>
+            <input type="text" name="resto" id="resto" />
+            <div class="box" id = "restaurant_list"> Number of payments made to an agency:</div>
+          </form>
+      </div>
+
         <div class="box disclaimer">
           <li>
             *** It is to be noted this is from a sample size of 1000 records,
@@ -68,6 +70,14 @@
           target="_blank"
         >
           Dataset</a
+        >
+
+        About The Author:
+        <a
+          href="https://data.princegeorgescountymd.gov/Finance-and-Budget/Spending-Information-for-FY-2022/jh2p-ym6a"
+          target="_blank"
+        >
+          Christian Cruz</a
         >
       </footer>
     </div>

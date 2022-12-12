@@ -83,7 +83,7 @@ function injectHTML(list, obj) {
   });
 }
   
-function shapeDataForChart(array, endpoint, list) {
+function shapeDataForChart(array, endpoint) {
     return array.reduce((collection,item) => {
         if (!collection[item.agency]){
             collection[item.agency] = [item];
@@ -93,6 +93,20 @@ function shapeDataForChart(array, endpoint, list) {
         return collection;
     },{});
 }
+
+function filterDataForChart(array, list){
+  return array.reduce((collection,item) => {
+    if (list.includes(item.agency))
+      if (!collection[item.agency]){
+          collection[item.agency] = [item];
+      } else {
+          collection[item.agency].push(item);
+      }
+      return collection;
+  },{});
+}
+
+
 
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
@@ -141,11 +155,15 @@ async function MainEvent() {
     console.log('input:', event.target.value);
     const newFilteredList = filterList(currentList, event.target.value);
     console.log(newFilteredList);
+    shapedData = filterDataForChart(chartData, newFilteredList)
+    myChart.destroy();
+    myChart = initChart(chartTarget, shapedData)
     injectHTML(newFilteredList,shapedData);
    ;
   });
 
-
+  console.log(chartData)
+  console.log(Object.entries(shapedData))
 }
 
 document.addEventListener('DOMContentLoaded', async () => MainEvent());
