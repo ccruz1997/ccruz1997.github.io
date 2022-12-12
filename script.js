@@ -68,7 +68,22 @@ function initChart(chart, object){
   );
 };
 
-function shapeDataForChart(array, endpoint) {
+function injectHTML(list, obj) {
+  console.log('fired injectHTML');
+  console.log(list);
+  const target = document.querySelector('#restaurant_list');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item + ' : ' + obj[item].length;
+    listEl.appendChild(el);
+  });
+}
+  
+function shapeDataForChart(array, endpoint, list) {
     return array.reduce((collection,item) => {
         if (!collection[item.agency]){
             collection[item.agency] = [item];
@@ -77,6 +92,14 @@ function shapeDataForChart(array, endpoint) {
         }
         return collection;
     },{});
+}
+
+function filterList(array, filterInputValue) {
+  return array.filter((item) => {
+    const upperCaseName = item.toUpperCase();
+    const upperCaseQuery = filterInputValue.toUpperCase();
+    return upperCaseName.includes(upperCaseQuery);
+  });
 }
 
 function addData(chart, label, data) {
@@ -105,16 +128,22 @@ function chartRefresh(chart) {
 async function MainEvent() {
   const chartTarget = document.querySelector('#myChart');
   const chartData = await getData();
-  const shapedData = shapeDataForChart(chartData);
-  const refreshButton = document.getElementById('refresh_button')
+  let shapedData = shapeDataForChart(chartData);
+  const form = document.querySelector('.main_form');
+  const target = document.querySelector('#restaurant_list');
+  
   let myChart = initChart(chartTarget, shapedData);
   console.log(shapedData);
 
-  refreshButton.addEventListener('click', (SubmitEvent) => {
-    console.log('button fired!');
-    chartRefresh(myChart);
-  })
+  currentList = Object.keys(shapedData);
 
+    form.addEventListener('input', (event) => {
+    console.log('input:', event.target.value);
+    const newFilteredList = filterList(currentList, event.target.value);
+    console.log(newFilteredList);
+    injectHTML(newFilteredList,shapedData);
+   ;
+  });
 
 
 }

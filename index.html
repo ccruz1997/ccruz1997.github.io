@@ -31,11 +31,14 @@
             </li>
           </p>
         </div>
-        <button type="submit" id = "refresh_button"> Refresh Visualization </button>
-        <div
-          class="chart_container"
-          style = 'width: 100%; height: 500px;'
-        >
+        <div class="box left_section">
+            <form class="box main_form">
+              <label for="resto"> Filter Restaurant List</label>
+              <input type="text" name="resto" id="resto" />
+              <div class="box" id = "restaurant_list"> Amount of payments by agency:</div>
+            </form>
+        </div>
+        <div class="chart_container" style="width: 100%; height: 500px">
           <canvas id="myChart"></canvas>
         </div>
         <div class="box disclaimer">
