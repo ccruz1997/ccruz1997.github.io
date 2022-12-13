@@ -15,22 +15,25 @@
         </h1>
       </header>
       <div class="container">
-        <div class="box left_section">
+        <div class="box main_section">
           <p>
+            <a
+          href="https://data.princegeorgescountymd.gov/Finance-and-Budget/Spending-Information-for-FY-2022/jh2p-ym6a"
+          target="_blank"
+        >
+            <img src="images/pg county logo.png" alt="PG County Data logo!" /> </a>
             <li>
               The following visualization describes payments to different
               agencies of PG county in the 2022 fiscal year.
             </li>
-            <li>
-              This particular chart shows the number of payments made.
-            </li>
+            <li>This particular chart shows the number of payments made.</li>
             <li>
               Hover over each bar for each data point and interact with the
               filtering options below.
             </li>
           </p>
         </div>
-        
+
         <div class="chart_container" style="width: 100%; height: 500px">
           <canvas id="myChart"></canvas>
         </div>
@@ -39,9 +42,11 @@
           <form class="box main_form">
             <label for="resto"> Filter by agency:</label>
             <input type="text" name="resto" id="resto" />
-            <div class="box" id = "restaurant_list"> Number of payments made to an agency:</div>
+            <div class="box" id="restaurant_list">
+              Number of payments made to an agency:
+            </div>
           </form>
-      </div>
+        </div>
 
         <div class="box disclaimer">
           <li>
@@ -70,14 +75,6 @@
           target="_blank"
         >
           Dataset</a
-        >
-
-        About The Author:
-        <a
-          href="https://data.princegeorgescountymd.gov/Finance-and-Budget/Spending-Information-for-FY-2022/jh2p-ym6a"
-          target="_blank"
-        >
-          Christian Cruz</a
         >
       </footer>
     </div>

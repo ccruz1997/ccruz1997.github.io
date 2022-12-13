@@ -153,6 +153,14 @@ form {
   flex-flow: column;
 }
 
+.main_section {
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding: 1rem;
+  display:flex;
+  flex-flow: column;
+}
+
 
 .disclaimer {
   flex: 0 1 auto;
